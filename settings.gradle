@@ -1,0 +1,7 @@
+include ':app', ':common', ':irecyclerview', ':jcvideoplayer', ':oneKeyShareSDK', ':photoPicker', ':selectordialog'
+project(':common').projectDir = new File('library/common')
+project(':irecyclerview').projectDir = new File('library/irecyclerview')
+project(':jcvideoplayer').projectDir = new File('library/jcvideoplayer')
+project(':oneKeyShareSDK').projectDir = new File('library/oneKeyShareSDK')
+project(':photoPicker').projectDir = new File('library/photoPicker')
+project(':selectordialog').projectDir = new File('library/selectordialog')
