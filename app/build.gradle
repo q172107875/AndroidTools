@@ -29,6 +29,8 @@ dependencies {
     compile project(':oneKeyShareSDK')//分享
     compile project(':jcvideoplayer')//视频播放
     compile project(':selectordialog')//常用提示框
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'// retrofit的Gson依赖包
+    compile 'com.squareup.retrofit2:converter-scalars:2.1.0'// retrofit的String依赖包
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
 }
