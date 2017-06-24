@@ -1,9 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="qibo.org.myapptools.ui.welcome.WelComeActivity">
-
-</android.support.constraint.ConstraintLayout>
+    android:orientation="vertical"
+    tools:context="qibo.org.myapptools.ui.welcome.activity.WelComeActivity">
+    <EditText
+        android:id="@+id/name_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/select_name_bt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="查询名字" />
+        <Button
+            android:id="@+id/select_id_bt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="查询ID" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/user_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+</LinearLayout>

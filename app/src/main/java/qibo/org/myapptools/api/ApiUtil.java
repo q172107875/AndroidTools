@@ -2,6 +2,7 @@ package qibo.org.myapptools.api;
 
 
 import com.jaydenxiao.common.baseapp.BaseApplication;
+import com.jaydenxiao.common.commonutils.LogUtils;
 
 import java.io.IOException;
 
@@ -29,12 +30,11 @@ public class ApiUtil {
                             "Android",
                             BaseUtil.getVersionCode(BaseApplication.getAppContext()) + "",
                             body
-                    )
-                    .execute();
+                    ).execute();
+            LogUtils.logd(result.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
         return result.body().toString();
     }
-
 }

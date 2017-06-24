@@ -4,6 +4,7 @@ import com.jaydenxiao.common.base.BaseModel;
 import com.jaydenxiao.common.base.BasePresenter;
 import com.jaydenxiao.common.base.BaseView;
 
+import qibo.org.myapptools.ui.bean.UserBean;
 import rx.Observable;
 
 /**
@@ -12,12 +13,15 @@ import rx.Observable;
 
 public interface WelcomeContract {
     interface Model extends BaseModel{
-        Observable<String> loadWelcomeac(String type);
+        Observable<UserBean> loadWelcomeac(String name);
+        Observable<UserBean> loadWelcomeacid(long id);
     }
     interface View extends BaseView{
-        void returnWelcomeac(String type);
+        void returnWelcomeac(UserBean userBean);
+        void returnWelcomeacid(UserBean userBean);
     }
     abstract static class Presenter extends BasePresenter<View,Model>{
-        public abstract void lodeWelcomeacRequest(String type);
+        public abstract void lodeWelcomeacRequest(String name);
+        public abstract void lodeWelcomeacRequestod(long id);
     }
 }

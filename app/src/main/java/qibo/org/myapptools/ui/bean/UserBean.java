@@ -1,27 +1,38 @@
-package qibo.org.myapptools.ui.welcome.bean;
-
-import java.util.Date;
+package qibo.org.myapptools.ui.bean;
 
 /**
- * Created by Zhangxq on 2016/7/15.
+ * Created by 17210 on 2017/6/25.
  */
-public class User {
 
-    private Long id;
+public class UserBean {
+
+    /**
+     * id : 1
+     * userName : 赵大宝
+     * userPhone : 13285250574
+     * userEmail : 1045221654@qq.com
+     * userPwd : 05126a423a9379d529e4ee61a212fa55
+     * pwdSalt : KJUYT5
+     * createTime : 1468597136000
+     * modifyTime : 1468597149000
+     * isDelete : 0
+     */
+
+    private int id;
     private String userName;
     private String userPhone;
     private String userEmail;
     private String userPwd;
     private String pwdSalt;
-    private Date createTime;
-    private Date modifyTime;
-    private Short isDelete;
+    private long createTime;
+    private long modifyTime;
+    private int isDelete;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -65,27 +76,27 @@ public class User {
         this.pwdSalt = pwdSalt;
     }
 
-    public Date getCreateTime() {
+    public long getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(long createTime) {
         this.createTime = createTime;
     }
 
-    public Date getModifyTime() {
+    public long getModifyTime() {
         return modifyTime;
     }
 
-    public void setModifyTime(Date modifyTime) {
+    public void setModifyTime(long modifyTime) {
         this.modifyTime = modifyTime;
     }
 
-    public Short getIsDelete() {
+    public int getIsDelete() {
         return isDelete;
     }
 
-    public void setIsDelete(Short isDelete) {
+    public void setIsDelete(int isDelete) {
         this.isDelete = isDelete;
     }
 }

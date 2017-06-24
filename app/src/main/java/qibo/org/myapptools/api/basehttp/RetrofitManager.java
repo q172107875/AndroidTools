@@ -54,7 +54,6 @@ public class RetrofitManager {
     private Retrofit mRetrofit;
     private static String BASE_URL = ApiConstant.BASE_URL;
     private static String BASE_URLS="";
-//    private static final String BASE_URL = "https://api.js99cf.com:8081/";
 
     private RetrofitManager() {
         initRetrofit();

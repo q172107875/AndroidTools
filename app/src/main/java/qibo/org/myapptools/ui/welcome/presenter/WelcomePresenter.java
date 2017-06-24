@@ -1,5 +1,8 @@
 package qibo.org.myapptools.ui.welcome.presenter;
 
+import com.jaydenxiao.common.commonutils.LogUtils;
+
+import qibo.org.myapptools.ui.bean.UserBean;
 import qibo.org.myapptools.ui.welcome.contract.WelcomeContract;
 import rx.Subscriber;
 
@@ -10,21 +13,39 @@ import rx.Subscriber;
 public class WelcomePresenter extends WelcomeContract.Presenter {
 
     @Override
-    public void lodeWelcomeacRequest(String type) {
-        mRxManage.add(mModel.loadWelcomeac(type).subscribe(new Subscriber<String>() {
+    public void lodeWelcomeacRequest(String name) {
+        mRxManage.add(mModel.loadWelcomeac(name).subscribe(new Subscriber<UserBean>() {
             @Override
             public void onCompleted() {
-
             }
 
             @Override
             public void onError(Throwable e) {
-
+                LogUtils.loge(e.getMessage()+e.toString());
             }
 
             @Override
-            public void onNext(String s) {
-                mView.returnWelcomeac(s);
+            public void onNext(UserBean userBean) {
+                mView.returnWelcomeac(userBean);
+            }
+        }));
+    }
+
+    @Override
+    public void lodeWelcomeacRequestod(long id) {
+        mRxManage.add(mModel.loadWelcomeacid(id).subscribe(new Subscriber<UserBean>() {
+            @Override
+            public void onCompleted() {
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                LogUtils.loge(e.getMessage()+e.toString());
+            }
+
+            @Override
+            public void onNext(UserBean userBean) {
+                mView.returnWelcomeacid(userBean);
             }
         }));
     }
