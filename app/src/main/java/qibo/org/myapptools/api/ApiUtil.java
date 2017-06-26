@@ -19,7 +19,9 @@ import retrofit2.Response;
 public class ApiUtil {
     // json
     private static final MediaType UTF_8 = MediaType.parse("application/json;charset=UTF-8");
-    public static String retResult(String param) {
+
+    public static String retResult(String path, String param) {
+
         Response<String> result = null;
         RequestBody body = RequestBody.create(UTF_8, param);
         try {
@@ -29,6 +31,7 @@ public class ApiUtil {
                     .apiPost("showUser",
                             "Android",
                             BaseUtil.getVersionCode(BaseApplication.getAppContext()) + "",
+                            path,
                             body
                     ).execute();
             LogUtils.logd(result.toString());

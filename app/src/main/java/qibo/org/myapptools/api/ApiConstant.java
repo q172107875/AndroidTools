@@ -22,7 +22,7 @@ public class ApiConstant {
 /**********************************************************************************************************SSM本地服务器*************************************************************************************************************************************/
 
 
-    public static final String BASE_URL = "http://192.168.1.42:8080";
+    public static final String BASE_URL = "http://192.168.1.107:8080";
      public static final String USER_USERNAMEW =BASE_URL+ "showUser";
      public static final String USER_USERID =BASE_URL+ "showUserId";
 
