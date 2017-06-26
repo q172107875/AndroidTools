@@ -28,7 +28,7 @@ public class ApiUtil {
             result = RetrofitManager
                     .getInstance()
                     .createService(ApiM.ApiService.class)
-                    .apiPost("showUser",
+                    .apiPost(
                             "Android",
                             BaseUtil.getVersionCode(BaseApplication.getAppContext()) + "",
                             path,
