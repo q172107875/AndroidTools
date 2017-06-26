@@ -9,10 +9,9 @@ import okhttp3.RequestBody;
 import qibo.org.myapptools.utils.SPUtilsUser;
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.Field;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
-import retrofit2.http.Path;
 
 /**
  * Created by qibo on 2017/6/23.
@@ -62,8 +61,9 @@ public class ApiM {
         /**
          * 通用接口
          */
-        @POST("/user/showUser")
+        @POST("/user")
         Call<String> apiPost(
+                @Field("showUser") String user,
                 @Header("platform") String platform,
                 @Header("version") String version,
                 @Body RequestBody body
