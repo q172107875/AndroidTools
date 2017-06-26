@@ -1,11 +1,8 @@
 package qibo.org.myapptools.ui.welcome.model;
 
 import com.alibaba.fastjson.JSON;
-import com.jaydenxiao.common.baseapp.AppCache;
-import com.jaydenxiao.common.baserx.RxSchedulers;
 import com.jaydenxiao.common.commonutils.LogUtils;
 
-import qibo.org.myapptools.api.ApiConstant;
 import qibo.org.myapptools.api.ApiM;
 import qibo.org.myapptools.api.ApiUtil;
 import qibo.org.myapptools.api.basehttp.DoSchedule;
@@ -28,7 +25,7 @@ public class WelcomeModel implements WelcomeContract.Model {
             public void call(Subscriber<? super String> subscriber) {
                 String reqPara = ApiM.getInstance().sekectUser(name);
                 LogUtils.logd(reqPara);
-                subscriber.onNext(ApiUtil.retResult(reqPara));
+                subscriber.onNext(ApiUtil.retResult("show",reqPara));
             }
         }).map(new Func1<String, UserBean>() {
             @Override
@@ -46,7 +43,7 @@ public class WelcomeModel implements WelcomeContract.Model {
             public void call(Subscriber<? super String> subscriber) {
                 String reqPara = ApiM.getInstance().sekectUserid(id);
                 LogUtils.logd(reqPara);
-                subscriber.onNext(ApiUtil.retResult(reqPara));
+                subscriber.onNext(ApiUtil.retResult("showUser",reqPara));
             }
         }).map(new Func1<String, UserBean>() {
             @Override

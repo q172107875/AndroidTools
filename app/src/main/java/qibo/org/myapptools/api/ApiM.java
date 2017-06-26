@@ -9,7 +9,6 @@ import okhttp3.RequestBody;
 import qibo.org.myapptools.utils.SPUtilsUser;
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
@@ -62,11 +61,13 @@ public class ApiM {
         /**
          * 通用接口
          */
-        @POST("/user/showUser")
+        @POST("/user/{show}")
         Call<String> apiPost(
                 @Header("platform") String platform,
                 @Header("version") String version,
+                @Path("show") String show,
                 @Body RequestBody body
+
         );
     }
     //    请求地址 : http://ip.taobao.com/service/getIpInfo.php?ip=202.202.32.202
