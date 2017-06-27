@@ -1,6 +1,5 @@
 package qibo.org.myapptools.ui.welcome.activity;
 
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -8,12 +7,12 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.jaydenxiao.common.base.BaseActivity;
-import com.jaydenxiao.common.commonutils.LogUtils;
+import com.jaydenxiao.common.commonutils.ToastUitl;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import qibo.org.myapptools.R;
 import qibo.org.myapptools.ui.bean.UserBean;
+import qibo.org.myapptools.ui.main.activity.MainActivity;
 import qibo.org.myapptools.ui.welcome.contract.WelcomeContract;
 import qibo.org.myapptools.ui.welcome.model.WelcomeModel;
 import qibo.org.myapptools.ui.welcome.presenter.WelcomePresenter;
@@ -44,13 +43,23 @@ public class WelComeActivity extends BaseActivity<WelcomePresenter, WelcomeModel
         selectNameBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mPresenter.lodeWelcomeacRequest(nameEt.getText().toString());
+                if (nameEt.getText().length() > 0) {
+                    mPresenter.lodeWelcomeacRequest(nameEt.getText().toString());
+                } else {
+                    ToastUitl.showLong("不能为空ID 或 Name");
+                }
+
             }
         });
         selectIdBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mPresenter.lodeWelcomeacRequestod(Long.parseLong(nameEt.getText().toString()));
+                if (nameEt.getText().length() > 0) {
+                    mPresenter.lodeWelcomeacRequestod(Long.parseLong(nameEt.getText().toString()));
+                } else {
+                    ToastUitl.showLong("不能为空ID 或 Name");
+                }
+
             }
         });
 
@@ -79,6 +88,12 @@ public class WelComeActivity extends BaseActivity<WelcomePresenter, WelcomeModel
     @Override
     public void returnWelcomeacid(UserBean userBean) {
         userText.setText(new Gson().toJson(userBean));
+        userText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(MainActivity.class);
+            }
+        });
     }
 
 }

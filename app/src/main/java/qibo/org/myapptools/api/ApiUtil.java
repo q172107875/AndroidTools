@@ -23,7 +23,9 @@ public class ApiUtil {
     public static String retResult(String path, String param) {
 
         Response<String> result = null;
+        LogUtils.loge(param);
         RequestBody body = RequestBody.create(UTF_8, param);
+
         try {
             result = RetrofitManager
                     .getInstance()
@@ -34,9 +36,10 @@ public class ApiUtil {
                             path,
                             body
                     ).execute();
-            LogUtils.logd(result.toString());
+
         } catch (IOException e) {
             e.printStackTrace();
+            LogUtils.loge(e.getMessage());
         }
         return result.body().toString();
     }

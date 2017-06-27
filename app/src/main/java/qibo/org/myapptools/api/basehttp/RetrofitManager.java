@@ -97,44 +97,44 @@ public class RetrofitManager {
 
 
 
-    private RetrofitManager(String url) {
-        initRetrofit(url);
-    }
-
-    public static synchronized RetrofitManager getInstance(String url) {
-        if (mRetrofitManagers == null) {
-            mRetrofitManagers = new RetrofitManager(url);
-        }
-        return mRetrofitManagers;
-    }
-
-
-    private void initRetrofit(String url) {
-        this.BASE_URLS = url;
-        // 消息拦截器
-        HttpLoggingInterceptor LoginInterceptor = new HttpLoggingInterceptor();
-        LoginInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-
-        // 连接操作
-        OkHttpClient client = new OkHttpClient.Builder()
-                .connectTimeout(8, TimeUnit.SECONDS)
-                .readTimeout(10, TimeUnit.SECONDS)
-                .writeTimeout(10, TimeUnit.SECONDS)
-                .retryOnConnectionFailure(true)
-//                .sslSocketFactory(SSLContextUtil.getSSLContext().getSocketFactory())
-                .build();
-
-        mRetrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URLS)
-                // 增加Bean支持返回
-//                .addConverterFactory(GsonConverterFactory.create())
-                // 增加String返回支持
-                .addConverterFactory(ScalarsConverterFactory.create())
-                // RxJava适配
-//                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .client(client)
-                .build();
-    }
+//    private RetrofitManager(String url) {
+//        initRetrofit(url);
+//    }
+//
+//    public static synchronized RetrofitManager getInstance(String url) {
+//        if (mRetrofitManagers == null) {
+//            mRetrofitManagers = new RetrofitManager(url);
+//        }
+//        return mRetrofitManagers;
+//    }
+//
+//
+//    private void initRetrofit(String url) {
+//        this.BASE_URLS = url;
+//        // 消息拦截器
+//        HttpLoggingInterceptor LoginInterceptor = new HttpLoggingInterceptor();
+//        LoginInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+//
+//        // 连接操作
+//        OkHttpClient client = new OkHttpClient.Builder()
+//                .connectTimeout(8, TimeUnit.SECONDS)
+//                .readTimeout(10, TimeUnit.SECONDS)
+//                .writeTimeout(10, TimeUnit.SECONDS)
+//                .retryOnConnectionFailure(true)
+////                .sslSocketFactory(SSLContextUtil.getSSLContext().getSocketFactory())
+//                .build();
+//
+//        mRetrofit = new Retrofit.Builder()
+//                .baseUrl(BASE_URLS)
+//                // 增加Bean支持返回
+////                .addConverterFactory(GsonConverterFactory.create())
+//                // 增加String返回支持
+//                .addConverterFactory(ScalarsConverterFactory.create())
+//                // RxJava适配
+////                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+//                .client(client)
+//                .build();
+//    }
 
     public <T> T createService(Class<T> reqServer) {
         return mRetrofit.create(reqServer);

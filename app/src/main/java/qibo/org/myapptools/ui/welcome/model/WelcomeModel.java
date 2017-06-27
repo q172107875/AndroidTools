@@ -12,6 +12,9 @@ import rx.Observable;
 import rx.Subscriber;
 import rx.functions.Func1;
 
+import static qibo.org.myapptools.api.ApiConstant.USER_USERID;
+import static qibo.org.myapptools.api.ApiConstant.USER_USERNAMEW;
+
 /**
  * Created by qibo on 2017/6/23.
  */
@@ -25,7 +28,7 @@ public class WelcomeModel implements WelcomeContract.Model {
             public void call(Subscriber<? super String> subscriber) {
                 String reqPara = ApiM.getInstance().sekectUser(name);
                 LogUtils.logd(reqPara);
-                subscriber.onNext(ApiUtil.retResult("show",reqPara));
+                subscriber.onNext(ApiUtil.retResult(USER_USERNAMEW,reqPara));
             }
         }).map(new Func1<String, UserBean>() {
             @Override
@@ -43,7 +46,9 @@ public class WelcomeModel implements WelcomeContract.Model {
             public void call(Subscriber<? super String> subscriber) {
                 String reqPara = ApiM.getInstance().sekectUserid(id);
                 LogUtils.logd(reqPara);
-                subscriber.onNext(ApiUtil.retResult("showUser",reqPara));
+                LogUtils.loge(ApiUtil.retResult(USER_USERID,reqPara));
+                subscriber.onNext(ApiUtil.retResult(USER_USERID,reqPara));
+
             }
         }).map(new Func1<String, UserBean>() {
             @Override
