@@ -6,13 +6,12 @@ import com.jaydenxiao.common.commonutils.LogUtils;
 import qibo.org.myapptools.api.ApiM;
 import qibo.org.myapptools.api.ApiUtil;
 import qibo.org.myapptools.api.basehttp.DoSchedule;
-import qibo.org.myapptools.ui.bean.UserBean;
+import qibo.org.myapptools.ui.welcome.bean.ShowUserBean;
 import qibo.org.myapptools.ui.welcome.contract.WelcomeContract;
 import rx.Observable;
 import rx.Subscriber;
 import rx.functions.Func1;
 
-import static qibo.org.myapptools.api.ApiConstant.USER_USERID;
 import static qibo.org.myapptools.api.ApiConstant.USER_USERNAMEW;
 
 /**
@@ -22,7 +21,7 @@ import static qibo.org.myapptools.api.ApiConstant.USER_USERNAMEW;
 public class WelcomeModel implements WelcomeContract.Model {
 
     @Override
-    public Observable<UserBean> loadWelcomeac(final String name) {
+    public Observable<ShowUserBean> loadWelcomeac(final String name) {
         return Observable.create(new Observable.OnSubscribe<String>() {
             @Override
             public void call(Subscriber<? super String> subscriber) {
@@ -30,32 +29,30 @@ public class WelcomeModel implements WelcomeContract.Model {
                 LogUtils.logd(reqPara);
                 subscriber.onNext(ApiUtil.retResult(USER_USERNAMEW,reqPara));
             }
-        }).map(new Func1<String, UserBean>() {
+        }).map(new Func1<String, ShowUserBean>() {
             @Override
-            public UserBean call(String s) {
-                LogUtils.logd(s);
-                return JSON.parseObject(s,UserBean.class);
+            public ShowUserBean call(String s) {
+                LogUtils.loge(s);
+                return JSON.parseObject(s,ShowUserBean.class);
             }
-        }).compose(DoSchedule.<UserBean>applySchedulers());
+        }).compose(DoSchedule.<ShowUserBean>applySchedulers());
     }
 
     @Override
-    public Observable<UserBean> loadWelcomeacid(final long id) {
+    public Observable<ShowUserBean> loadWelcomeacid(final long id) {
         return Observable.create(new Observable.OnSubscribe<String>() {
             @Override
             public void call(Subscriber<? super String> subscriber) {
                 String reqPara = ApiM.getInstance().sekectUserid(id);
-                LogUtils.logd(reqPara);
-                LogUtils.loge(ApiUtil.retResult(USER_USERID,reqPara));
-                subscriber.onNext(ApiUtil.retResult(USER_USERID,reqPara));
+                subscriber.onNext(ApiUtil.retResult(USER_USERNAMEW,reqPara));
 
             }
-        }).map(new Func1<String, UserBean>() {
+        }).map(new Func1<String, ShowUserBean>() {
             @Override
-            public UserBean call(String s) {
-                LogUtils.logd(s);
-                return JSON.parseObject(s,UserBean.class);
+            public ShowUserBean call(String s) {
+                LogUtils.loge(s);
+                return JSON.parseObject(s,ShowUserBean.class);
             }
-        }).compose(DoSchedule.<UserBean>applySchedulers());
+        }).compose(DoSchedule.<ShowUserBean>applySchedulers());
     }
 }

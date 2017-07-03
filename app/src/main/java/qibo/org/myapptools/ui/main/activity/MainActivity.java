@@ -42,7 +42,7 @@ public class MainActivity extends BaseActivity<MainPresenter, MainModel> impleme
                 userBean.setUserEmail("297340134@qq.com");
                 userBean.setUserPwd("123456");
                 mPresenter.lodeMainacRequest(userBean);
-                showLoading("正在加载..");
+                startProgressDialog("正在加载...");
             }
         });
 
@@ -69,8 +69,9 @@ public class MainActivity extends BaseActivity<MainPresenter, MainModel> impleme
         stopLoading();
         if (userInfoBean.getResult().equals("0")) {
             userRegister.setText(userInfoBean.toString());
-            ToastUitl.showLong(userInfoBean.getMsg());
         }
+        ToastUitl.showLong(userInfoBean.getMsg());
+        stopProgressDialog();
 
     }
 

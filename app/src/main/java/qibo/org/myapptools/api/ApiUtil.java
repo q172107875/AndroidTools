@@ -1,6 +1,8 @@
 package qibo.org.myapptools.api;
 
 
+import android.support.annotation.NonNull;
+
 import com.jaydenxiao.common.baseapp.BaseApplication;
 import com.jaydenxiao.common.commonutils.LogUtils;
 
@@ -20,6 +22,7 @@ public class ApiUtil {
     // json
     private static final MediaType UTF_8 = MediaType.parse("application/json;charset=UTF-8");
 
+    @NonNull
     public static String retResult(String path, String param) {
 
         Response<String> result = null;

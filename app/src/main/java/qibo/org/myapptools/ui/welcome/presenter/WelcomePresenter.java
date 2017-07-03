@@ -2,7 +2,7 @@ package qibo.org.myapptools.ui.welcome.presenter;
 
 import com.jaydenxiao.common.commonutils.LogUtils;
 
-import qibo.org.myapptools.ui.bean.UserBean;
+import qibo.org.myapptools.ui.welcome.bean.ShowUserBean;
 import qibo.org.myapptools.ui.welcome.contract.WelcomeContract;
 import rx.Subscriber;
 
@@ -14,7 +14,7 @@ public class WelcomePresenter extends WelcomeContract.Presenter {
 
     @Override
     public void lodeWelcomeacRequest(String name) {
-        mRxManage.add(mModel.loadWelcomeac(name).subscribe(new Subscriber<UserBean>() {
+        mRxManage.add(mModel.loadWelcomeac(name).subscribe(new Subscriber<ShowUserBean>() {
             @Override
             public void onCompleted() {
             }
@@ -25,15 +25,15 @@ public class WelcomePresenter extends WelcomeContract.Presenter {
             }
 
             @Override
-            public void onNext(UserBean userBean) {
-                mView.returnWelcomeac(userBean);
+            public void onNext(ShowUserBean showUserBean) {
+                mView.returnWelcomeac(showUserBean);
             }
         }));
     }
 
     @Override
     public void lodeWelcomeacRequestod(long id) {
-        mRxManage.add(mModel.loadWelcomeacid(id).subscribe(new Subscriber<UserBean>() {
+        mRxManage.add(mModel.loadWelcomeacid(id).subscribe(new Subscriber<ShowUserBean>() {
             @Override
             public void onCompleted() {
             }
@@ -44,8 +44,8 @@ public class WelcomePresenter extends WelcomeContract.Presenter {
             }
 
             @Override
-            public void onNext(UserBean userBean) {
-                mView.returnWelcomeacid(userBean);
+            public void onNext(ShowUserBean showUserBean) {
+                mView.returnWelcomeacid(showUserBean);
             }
         }));
     }

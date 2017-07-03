@@ -26,7 +26,6 @@ public class ApiConstant {
 //    public static final String BASE_URL = "http://192.168.1.141:8080";
     public static final String BASE_URL = "http://192.168.1.42:8080";
      public static final String USER_USERNAMEW ="showUser";
-     public static final String USER_USERID ="show";
      public static final String USER_REGISTER ="userRegister";
 
 }
